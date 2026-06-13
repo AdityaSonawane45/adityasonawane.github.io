@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Sonawane | Software Developer</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff;
+    --bg2: #f7f7f5;
+    --bg3: #f0efeb;
+    --text: #1a1a18;
+    --text2: #5a5a56;
+    --text3: #9a9a94;
+    --border: rgba(0,0,0,0.1);
+    --blue-bg: #e6f1fb;
+    --blue-text: #185fa5;
+    --green-bg: #eaf3de;
+    --green-text: #3b6d11;
+    --radius: 10px;
+    --radius-lg: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a;
+      --bg2: #242422;
+      --bg3: #2c2c2a;
+      --text: #f0efe8;
+      --text2: #b0b0a8;
+      --text3: #707068;
+      --border: rgba(255,255,255,0.1);
+      --blue-bg: #0c447c;
+      --blue-text: #b5d4f4;
+      --green-bg: #27500a;
+      --green-text: #c0dd97;
+    }
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg3); color: var(--text); line-height: 1.6; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  /* HERO */
+  .hero { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem 2rem 2rem; margin-bottom: 1.25rem; }
+  .hero-tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; background: var(--blue-bg); color: var(--blue-text); padding: 4px 10px; border-radius: var(--radius); margin-bottom: 1rem; }
+  .hero-name { font-size: 32px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .hero-sub { font-size: 15px; color: var(--text2); margin-bottom: 1.5rem; }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hero-link { font-size: 13px; color: var(--text2); text-decoration: none; border: 0.5px solid var(--border); padding: 6px 12px; border-radius: var(--radius); display: flex; align-items: center; gap: 6px; transition: background 0.15s; }
+  .hero-link:hover { background: var(--bg2); }
+  .hero-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* CARD */
+  .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem 1.75rem; margin-bottom: 1.25rem; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--text3); text-transform: uppercase; margin-bottom: 1rem; }
+
+  /* ABOUT */
+  .about-text { font-size: 15px; color: var(--text2); line-height: 1.75; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .skill-item { background: var(--bg2); border-radius: var(--radius); padding: 0.875rem 1rem; }
+  .skill-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 11px; color: var(--text2); background: var(--bg3); padding: 2px 8px; border-radius: 6px; border: 0.5px solid var(--border); }
+
+  /* PROJECT */
+  .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .project-name { font-size: 15px; font-weight: 600; color: var(--text); }
+  .project-badge { font-size: 11px; font-weight: 500; background: var(--blue-bg); color: var(--blue-text); padding: 3px 9px; border-radius: var(--radius); }
+  .project-desc { font-size: 13px; color: var(--text2); margin-bottom: 10px; line-height: 1.6; }
+  .bullets { list-style: none; padding: 0; }
+  .bullets li { font-size: 13px; color: var(--text2); padding: 3px 0 3px 14px; position: relative; line-height: 1.5; }
+  .bullets li::before { content: "–"; position: absolute; left: 0; color: var(--text3); }
+
+  /* EXPERIENCE */
+  .exp-block { border-left: 2px solid var(--blue-bg); padding-left: 1rem; margin-bottom: 0; }
+  .exp-role { font-size: 15px; font-weight: 600; color: var(--text); }
+  .exp-company { font-size: 13px; color: var(--text2); margin-bottom: 3px; }
+  .exp-date { font-size: 12px; color: var(--text3); margin-bottom: 10px; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .edu-item { background: var(--bg2); border-radius: var(--radius); padding: 0.875rem 1rem; }
+  .edu-degree { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .edu-college { font-size: 12px; color: var(--text2); margin-bottom: 4px; }
+  .edu-year { font-size: 11px; color: var(--text3); }
+
+  /* CERTIFICATIONS */
+  .cert-item { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 0.5px solid var(--border); }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-text); flex-shrink: 0; }
+  .cert-name { font-size: 13px; color: var(--text2); }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .contact-item { background: var(--bg2); border-radius: var(--radius); padding: 0.75rem 1rem; }
+  .contact-label { font-size: 11px; color: var(--text3); margin-bottom: 3px; }
+  .contact-value { font-size: 13px; font-weight: 500; color: var(--text); word-break: break-all; }
+
+  /* FOOTER */
+  .footer { text-align: center; font-size: 12px; color: var(--text3); margin-top: 2rem; }
+
+  @media (max-width: 500px) {
+    .edu-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero-name { font-size: 26px; }
+    .card { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Open to opportunities · Pune</div>
+    <div class="hero-name">Aditya Sonawane</div>
+    <div class="hero-sub">Fresher Software Developer &nbsp;·&nbsp; C++ &nbsp;·&nbsp; DSA &nbsp;·&nbsp; OOP</div>
+    <div class="hero-links">
+      <a class="hero-link" href="mailto:adityasonawane2045@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        adityasonawane2045@gmail.com
+      </a>
+      <a class="hero-link" href="https://linkedin.com/in/aditya-sonawane-5064361a2" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="hero-link" href="https://adityasonawane45.github.io/adityasonawane.github.io/" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Portfolio</a><a class="hero-link" href="tel:+917387932877">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        7387932877
+      </a>
+      <a class="hero-link" href="https://github.com/AdityaSonawane45" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="card">
+    <div class="section-label">About</div>
+    <p class="about-text">Fresher Software Developer with a background in Electrical Engineering. Proficient in C and C++ with a solid foundation in OOP, Data Structures, and Algorithms. Experienced in leveraging AI tools to enhance productivity and automate workflows. Strong problem-solver, familiar with Agile methodology, debugging practices, and the Software Development Life Cycle (SDLC).</p>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="card">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-title">Languages</div>
+        <div class="tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Swift</span><span class="tag">Java</span></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-title">Core CS</div>
+        <div class="tags"><span class="tag">DSA</span><span class="tag">OOP</span><span class="tag">Problem Solving</span></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-title">Tools</div>
+        <div class="tags"><span class="tag">VSCode</span><span class="tag">GitHub</span><span class="tag">Cursor AI</span></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-title">AI Tools</div>
+        <div class="tags"><span class="tag">ChatGPT</span><span class="tag">Claude AI</span><span class="tag">Cursor AI</span></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-title">Methodology</div>
+        <div class="tags"><span class="tag">Agile</span><span class="tag">SDLC</span><span class="tag">Debugging</span></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-title">OS & Source</div>
+        <div class="tags"><span class="tag">macOS</span><span class="tag">Windows</span><span class="tag">GitHub</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT -->
+  <div class="card">
+    <div class="section-label">Project</div>
+    <div class="project-header">
+      <div class="project-name">Student Record Management System</div>
+      <div class="project-badge">C++</div>
+    </div>
+    <p class="project-desc">Console-based application to manage student records with dynamic data handling and persistent storage.</p>
+    <ul class="bullets">
+      <li>Implemented Linked List and Arrays for dynamic data storage and management</li>
+      <li>Applied OOP concepts — classes, objects, encapsulation, and inheritance</li>
+      <li>Used file handling for persistent data storage across sessions</li>
+    </ul>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="card">
+    <div class="section-label">Experience</div>
+    <div class="exp-block">
+      <div class="exp-role">Technical Support Engineer</div>
+      <div class="exp-company">Ekam Interface Private Limited, Kolhapur</div>
+      <div class="exp-date">August 2024 – November 2025</div>
+      <ul class="bullets">
+        <li>Provided remote software/hardware technical support, analyzing logs and resolving issues</li>
+        <li>Used AI-based tools to automate reports, enhance data handling, and support business decisions</li>
+        <li>Analyzed electrical, switchgear, motor, and automation inventory to assess condition and value</li>
+        <li>Prepared technical proposals, quotations, reports, and presentations for clients</li>
+        <li>Delivered support via calls, emails, and remote assistance</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="card">
+    <div class="section-label">Education</div>
+    <div class="edu-grid">
+      <div class="edu-item">
+        <div class="edu-degree">BE – Electrical Engineering</div>
+        <div class="edu-college">Trinity College of Engineering & Research, Pune</div>
+        <div class="edu-year">2024 · SGPA 7.64 / 10</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">Diploma – Electrical Engineering</div>
+        <div class="edu-college">Government Polytechnic, Ahilyanagar</div>
+        <div class="edu-year">2020 · 62.18%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="card">
+    <div class="section-label">Certifications</div>
+    <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">iOS Application Development</div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">C & C++ Language</div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">Master ChatGPT: Transform Your Life With AI Chatbots</div></div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="card">
+    <div class="section-label">Contact</div>
+    <div class="contact-grid">
+      <div class="contact-item"><div class="contact-label">Email</div><div class="contact-value">adityasonawane2045@gmail.com</div></div>
+      <div class="contact-item"><div class="contact-label">Phone</div><div class="contact-value">+91 7387932877</div></div>
+      <div class="contact-item"><div class="contact-label">LinkedIn</div><div class="contact-value">aditya-sonawane-5064361a2</div></div>
+      <div class="contact-item"><div class="contact-label">Location</div><div class="contact-value">Pune, Maharashtra</div></div>
+    </div>
+  </div>
+
+  <div class="footer">Aditya Sonawane · Fresher Software Developer · Pune</div>
+</div>
+</body>
+</html>
